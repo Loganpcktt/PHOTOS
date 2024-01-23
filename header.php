@@ -16,7 +16,7 @@
 </head>
 
 <!-- NavBar -->
-<nav class="navbar navbar-expand-sm bg-secondary navbar-light py-2">
+<nav class="navbar navbar-expand-sm navbar-light py-2 Header">
       <!-- Brand -->
       <a class="navbar-brand mr-auto pr-4" href="#">The Wave</a>
 
