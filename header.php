@@ -15,16 +15,24 @@
     <?php wp_head(); ?>
 </head>
 
+<?php
+    // Get the ID of a given category
+    $category_id = get_cat_ID( 'ARTS + MUSIC' );
+
+    // Get the URL of this category
+    $category_link = get_category_link( $category_id );
+?>
+
 <!-- NavBar -->
 <nav class="navbar navbar-expand-sm navbar-light py-2 Header">
       <!-- Brand -->
-      <a class="navbar-brand mr-auto pr-4" href="#">The Wave</a>
+      <a class="navbar-brand mr-auto pr-4" href="<?php echo esc_url( home_url( '/' ) ); ?>">The Wave</a>
 
       <!-- Links -->
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
               <li class="nav-item active">
-                  <a class="nav-link" href="#">ARTS + MUSIC</a>
+                  <a class="nav-link" href="<?php echo esc_url( $category_link ); ?>">ARTS + MUSIC</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="#">FOOD + DRINK</a>
@@ -35,6 +43,17 @@
               <li class="nav-item">
                   <a class="nav-link" href="#">EVENTS</a>
               </li>
+
+            <!-- NOT IMPLEMENTED -->
+            <?php
+            $menu_items = wp_get_nav_menu_items('Primary Menu');
+
+            foreach ($menu_items as $menu_item) {
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link" href="' . $menu_item->url . '">' . $menu_item->title . '</a>';
+                echo '</li>';
+            }
+            ?>
           </ul>
       </div>
 </nav>

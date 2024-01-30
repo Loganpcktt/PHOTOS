@@ -18,10 +18,10 @@ foreach ($categories as $category) {
 
     if ($query->have_posts()) :
 
-        $post_number = 1; // Initialize post number counter
+        $post_number = 1;
 
         echo '<div class="container py-3">';
-        echo '<h2>' . $category->name . '</h2>';
+        echo '<h2><a href="' . esc_url(get_category_link($category)) . '">' . $category->name . '</a></h2>';
         echo '<div class="row">';
         while ($query->have_posts()) : $query->the_post();
 
@@ -34,42 +34,39 @@ foreach ($categories as $category) {
             $author_avatar = get_avatar_url($author_id);
 
             if ($post_number == 1) {
-                the_ID();
                 echo '<div class="col-sm">';
-                $featured_img_url;
                 the_content();
-                echo '<h4>' . get_the_title() . '</h4>';
+                echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
+                echo '<img src="' . $author_avatar . '" class="img-fluid" alt="Responsive image" style="width:35px;border-radius:25px">';
                 the_author();
                 echo '</div>';
                 echo '<div class="container col-sm">';
             } elseif ($post_number == 2 || $post_number == 3) {
-                the_ID();
                 echo '<div class="SmallPost">';
                 the_post_thumbnail();
-                echo '<h4>' . get_the_title() . '</h4>';
+                echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
                 echo '<p> By ';
                 the_author();
                 '</p>';
                 echo '</div>';
             } else {
-                the_ID();
                 echo '<div>';
                 the_post_thumbnail();
-                echo '<h4>' . get_the_title() . '</h4>';
+                echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
                 echo '<p> By ';
                 the_author();
                 '</p>';
                 echo '</div>';
             }
 
-            $post_number++; // Increment post number
+            $post_number++;
 
         endwhile;
         echo '</div>';
         echo '</div>';
         echo '</div>';
     endif;
-    wp_reset_postdata(); // Reset the query to the main loop
+    wp_reset_postdata(); 
 }
 
 get_footer();
