@@ -21,7 +21,7 @@ foreach ($categories as $category) {
         $post_number = 1;
 
         echo '<div class="container py-3">';
-        echo '<h2><a href="' . esc_url(get_category_link($category)) . '">' . $category->name . '</a></h2>';
+        echo '<h2>' . $category->name . '</a></h2>';
         echo '<div class="row">';
         while ($query->have_posts()) : $query->the_post();
 
@@ -35,7 +35,9 @@ foreach ($categories as $category) {
 
             if ($post_number == 1) {
                 echo '<div class="col-sm">';
-                the_content();
+                
+            the_post_thumbnail();      
+
                 echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
                 echo '<img src="' . $author_avatar . '" class="img-fluid" alt="Responsive image" style="width:35px;border-radius:25px">';
                 the_author();
@@ -43,7 +45,6 @@ foreach ($categories as $category) {
                 echo '<div class="container col-sm">';
             } elseif ($post_number == 2 || $post_number == 3) {
                 echo '<div class="SmallPost">';
-                the_post_thumbnail();
                 echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
                 echo '<p> By ';
                 the_author();
@@ -51,7 +52,6 @@ foreach ($categories as $category) {
                 echo '</div>';
             } else {
                 echo '<div>';
-                the_post_thumbnail();
                 echo '<h4> <a href="' . esc_url($post_url) . '">'. get_the_title() .'<a/> </h4>';
                 echo '<p> By ';
                 the_author();

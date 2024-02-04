@@ -17,10 +17,16 @@
 
 <?php
     // Get the ID of a given category
-    $category_id = get_cat_ID( 'ARTS + MUSIC' );
+    $category_id_ART = get_cat_ID( 'ARTS + MUSIC' );
+    $category_id_FOOD = get_cat_ID( 'e' ); 
+    $category_id_OPINION = get_cat_ID( 'OPINION' );
+    $category_id_EVENTS = get_cat_ID( 'EVENTS' );
 
     // Get the URL of this category
-    $category_link = get_category_link( $category_id );
+    $category_link_ART = get_category_link( $category_id_ART );
+    $category_link_FOOD = get_category_link( $category_id_FOOD );
+    $category_link_OPINION = get_category_link( $category_id_OPINION );
+    $category_link_EVENTS = get_category_link( $category_id_EVENTS );
 ?>
 
 <!-- NavBar -->
@@ -32,16 +38,16 @@
       <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
               <li class="nav-item active">
-                  <a class="nav-link" href="<?php echo esc_url( $category_link ); ?>">ARTS + MUSIC</a>
+                  <a class="nav-link" href="<?php echo esc_url( $category_link_ART ); ?>">ARTS + MUSIC</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">FOOD + DRINK</a>
+                  <a class="nav-link" href="<?php echo esc_url( $category_link_FOOD ); ?>">FOOD + DRINK</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">OPINION</a>
+                  <a class="nav-link" href="<?php echo esc_url( $category_link_OPINION ); ?>">OPINION</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">EVENTS</a>
+                  <a class="nav-link" href="<?php echo esc_url( $category_link_EVENTS ); ?>">EVENTS</a>
               </li>
 
             <!-- NOT IMPLEMENTED -->
